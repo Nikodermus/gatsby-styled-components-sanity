@@ -60,7 +60,7 @@
   ],
   "scripts": {
     "build": "NODE_OPTIONS='-r esm' gatsby build",
-    "format": "prettier --write '**/*.{yaml,yml,json,md,html,css}' && eslint '**/*.{js,vue,gql}' --fix",
+    "format":"prettier --write \"**/*.{yaml,yml,json,md,html,css}\" && eslint \"**/*.{js,jsx,gql}\" --fix",
     "start": "GATSBY_GRAPHQL_IDE=playground NODE_OPTIONS='-r esm' gatsby develop",
     "serve": "NODE_OPTIONS='-r esm' gatsby serve",
     "clean": "NODE_OPTIONS='-r esm' gatsby clean",

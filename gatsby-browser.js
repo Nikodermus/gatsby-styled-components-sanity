@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ContextProvider } from './src/utils/context';
-import Layout from './src/components/Layout/molecules/Layout';
+import Layout from './src/components/Library/molecules/Layout';
 
 import './static/fonts/fonts.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import SEO from '../components/Layout/atoms/SEO';
+import SEO from '../components/Library/atoms/SEO';
 
 const IndexPage = () => (
     <>

@@ -16,12 +16,13 @@ export const COLORS = {
 export const INFO = {
     address: 'REPLACE_ME',
     color: COLORS.brandOrange,
+    description: `REPLACE_ME`,
     email: 'REPLACE_ME@gmail.com',
+    googleMaps: 'REPLACE_ME',
+    language: 'es-CO',
     name: 'REPLACE_ME',
     number: '57REPLACE_ME',
     URL: 'https://REPLACE_ME.com',
-    description: `REPLACE_ME`,
-    googleMaps: 'REPLACE_ME',
 };
 
 export const SOCIAL_MEDIA = {

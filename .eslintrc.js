@@ -28,7 +28,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['**/tests/**/*'],
+            files: ['**/tests/**/*', '**/scripts/**/*'],
             rules: {
                 'import/no-extraneous-dependencies': [
                     'error',

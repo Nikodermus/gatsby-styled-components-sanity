@@ -1,7 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import { INFO } from '../../../constants/site';
 
 function SEO({ description, lang, meta, title }) {
     const { site } = useStaticQuery(
@@ -66,7 +68,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-    lang: 'es',
+    lang: INFO.language,
     meta: [],
     description: '',
 };

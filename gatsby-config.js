@@ -61,13 +61,14 @@ const config = {
                 },
             },
         },
-        {
-            resolve: `gatsby-source-sanity`,
-            options: {
-                projectId: `u5hkgaly`,
-                dataset: `production`,
-            },
-        },
+        // Uncomment and add your projectID and dataset
+        // {
+        //     resolve: `gatsby-source-sanity`,
+        //     options: {
+        //         projectId: `REPLACE_ME`,
+        //         dataset: `production`,
+        //     },
+        // },
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {

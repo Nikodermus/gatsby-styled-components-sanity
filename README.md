@@ -1,99 +1,148 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Another Gatsby Boilerplate (by Nikodermus)
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+A _very_ opinionated boilerplate for creating sites with Gatsby, that focus on 3 main things. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), [Styled Components](https://styled-components.com/) and [CSS Variable System](https://www.infoq.com/news/2020/06/css-variables-design-systems/)
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## Table of Contents
 
-## 🚀 Quick start
+1. [🆕 Creating a Project](##creating-a-project)
+1. [🐎 Before We Start](##before-we-start)
+1. [👩🏽‍💻 Gatsby Development](##gastsby-development)
+1. [🧰 Utils](##utils)
+1. [🟦 VSCode](##vscode)
+1. [💫 Deploy](##deploy)
 
-1.  **Create a Gatsby site.**
+---
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## 🆕 Creating a Project
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+-   Using the Gatsby CLI, requires [Node JS](https://nodejs.org/en/) 12+
+
+    ```bash
+    npx gatsby new site-name https://github.com/Nikodermus/gatsby-styled-components-sanity
     ```
 
-1.  **Start developing.**
+-   Using the GitHub template, you can click on `Use this template` and you will be guided through the steps. You can clone from your account afterwards.
 
-    Navigate into your new site’s directory and start it up.
+    ![GitHub Template](https://i.ibb.co/yfK0Zc2/gatsby-styled-components-sanity.png)
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+---
 
-1.  **Open the source code and start editing!**
+## 🐎 Before We Start
 
-    Your site is now running at `http://localhost:8000`!
+1. Search for `REPLACE_ME` and change accordingly in all files.
+1. Include your site or brand colors in `src/constants/site.js`, this will auto-generate the corresponding CSS variables.
+1. Replace `static/images/favicon.png` for your own.
+1. Include your fonts in `static/images` and link the `@font-face` in `static/images/fonts.css`
+1. Uncomment in `gatsby-config.js` the `Sanity` plugin and include your `projectId`
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+---
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+## 👩🏽‍💻 Gatsby Development
 
-## 🧐 What's inside?
+```bash
+yarn start # To get started
+```
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+### Layout
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+This component is used to share elements beween pages, you can find it in `src/components/Library/molecules/Layout.jsx`, you can extend it to include what you want to appear in all pages. `Nav` and `Footer` are already included.
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+### Global Context (Store)
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+This project also has a context set up between pages, it won't be lost between page changes, the context definition is in `src/utils/context.js` and you can use it easily with a custom hook already provided:
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+```jsx
+import { useGlobalContext } from 'src/utils/context';
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+const Component = () => {
+    const [state, dispatch] = useGlobalContext();
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+    return <div>{JSON.stringify(state)}</div>;
+};
+```
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+### Hooks
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+```jsx
+import {
+    // Pass a ref and a callback that triggers when it clicks outside
+    useClickOutside,
+    // Pass a boolean to change if scroll is disabled
+    // Returns method to change the scroll disables
+    useScrollDisabled,
+    // Pass a string, gets parsed as a WhatsApp link message
+    // The message changes between desktop/mobile
+    useWhatsappMessage,
+} from 'src/utils/hooks';
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+// Returns an object {isDesktop, isMobile} properties.
+// It uses the BREAKPOINTS from 'src/constants/styled'
+import { useMediaChange } from 'src/utils/context';
+```
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+### Gatsby Plugins
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+| Name                                                                                     | Use                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`google-analytics` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-analytics)   | Include GA tracking                                                                                                                                  |
+| [`google-gtag` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag)             | Include GA tracking                                                                                                                                  |
+| [`netlify` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-netlify)                     | Automatically generates a \_headers file and a \_redirects file at the root of the public folder to configure HTTP headers and redirects on Netlify. |
+| [`sanity-image` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-sanity-image)           | The well-considered marriage between Sanity’s image assets and Gatsby you’ve been looking for.                                                       |
+| [`sitemap` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap)                     | Create a sitemap for your Gatsby site.                                                                                                               |
+| [`source-sanity` ](https://www.gatsbyjs.com/plugins/gatsby-source-sanity)                | Source plugin for pulling data from Sanity.io into Gatsby websites.                                                                                  |
+| [`styled-components` ](https://www.gatsbyjs.com/plugins/gatsby-plugin-styled-components) | SSR for Styled Components                                                                                                                            |
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+---
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+## 🧰 Utils
 
-## 🎓 Learning Gatsby
+### CSS Variables
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+This project uses a set of utilities to create a design system out of CSS Variables, using as source `src/constants/styled.js`, use your browser to see all the generated variables.
 
--   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+### SEO.jsx
 
--   **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+Gatsby component to provide metadata to each page.
+
+### CLI
+
+This project is meant to use [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), which uses various folders, to scaffold this, you can use the following commands to create or delete this scaffolding.
+
+```bash
+# Creates the folders in 'src/components/Name' and the jsx file in `src/pages`
+yarn page:create name
+
+# Deletes all that was created by the CLI for the name
+yarn page:delete name
+
+```
+
+---
+
+## 🟦 VSCode
+
+VSCode configuration out from the box to use formatting and linting, you can install all necessary extension, open the command palette `(⇧⌘P)` and use:
+
+```
+Extensions: Enable All Extensions for this Workspace
+```
+
+### Extension Details
+
+| Download                                                                                                        | Why                                                          |
+| :-------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)                   | EditorConfig Support for Visual Studio Code.                 |
+| [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)                            | Integrates ESLint JavaScript into VS Code.                   |
+| [GraphQL](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql)                           | Highlighting, validation, and language features for graphql. |
+| [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)                          | Code formatter using prettier.                               |
+| [React PropTypes Generate](https://marketplace.visualstudio.com/items?itemName=suming.react-proptypes-generate) | Auto generate react's propTypes.                             |
+| [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets) | Dead simple React snippets you will actually use.            |
+| [Styled Components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)  | Syntax highlighting for styled-components.                   |
+
+---
 
 ## 💫 Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+We got you covered, deploying to Netlify is as simple as adding your repo in the dashboard page :)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nikodermus/gatsby-styled-components-sanity)

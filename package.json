@@ -54,17 +54,20 @@
     "jest": "^26.6.3",
     "lint-staged": "^10.2.11",
     "prettier": "2.2.1",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "rimraf": "^3.0.2"
   },
   "keywords": [
     "gatsby"
   ],
   "scripts": {
     "build": "NODE_OPTIONS='-r esm' gatsby build",
-    "format": "prettier --write \"**/*.{yaml,yml,json,md,html,css}\" && eslint \"**/*.{js,jsx,gql}\" --fix",
-    "start": "GATSBY_GRAPHQL_IDE=playground NODE_OPTIONS='-r esm' gatsby develop",
-    "serve": "NODE_OPTIONS='-r esm' gatsby serve",
     "clean": "NODE_OPTIONS='-r esm' gatsby clean",
+    "format": "prettier --write \"**/*.{yaml,yml,json,md,html,css}\" && eslint \"**/*.{js,jsx,gql}\" --fix",
+    "page:create": "node -r esm ./scripts/page-create.js",
+    "page:delete": "node -r esm ./scripts/page-delete.js",
+    "serve": "NODE_OPTIONS='-r esm' gatsby serve",
+    "start": "GATSBY_GRAPHQL_IDE=playground NODE_OPTIONS='-r esm' gatsby develop",
     "test": "jest"
   }
 }

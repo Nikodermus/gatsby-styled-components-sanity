@@ -9,6 +9,7 @@ A _very_ opinionated boilerplate for creating sites with Gatsby, that focus on 3
 1. [👩🏽‍💻 Gatsby Development](#-gastsby-development)
 1. [🧰 Utils](#-utils)
 1. [🟦 VSCode](#-vscode)
+1. [🧪 Testing](#-testing)
 1. [💫 Deploy](#-deploy)
 
 ---
@@ -213,6 +214,19 @@ Extensions: Enable All Extensions for this Workspace
 | [React PropTypes Generate](https://marketplace.visualstudio.com/items?itemName=suming.react-proptypes-generate) | Auto generate react's propTypes.                             |
 | [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets) | Dead simple React snippets you will actually use.            |
 | [Styled Components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)  | Syntax highlighting for styled-components.                   |
+
+---
+
+### 🧪 Testing
+
+This project uses `jest` as test runner and `enzyme` to mount React components and do component testing.
+
+```bash
+# Run all .spec and .test files inside tests/components and tests/unit
+yarn test
+```
+
+To run a specific test or set of tests use `yarn test -t someName`, where someName is in the text of the tests. Tests, linting and formatting are running before each commit with [husky](https://www.npmjs.com/package/husky) so you don't commit broken tests or builds.
 
 ---
 

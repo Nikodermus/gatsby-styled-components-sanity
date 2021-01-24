@@ -10,6 +10,7 @@ const config = {
     plugins: [
         `gatsby-plugin-netlify`,
         `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-sanity-image`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-styled-components`,
         `gatsby-transformer-sharp`,

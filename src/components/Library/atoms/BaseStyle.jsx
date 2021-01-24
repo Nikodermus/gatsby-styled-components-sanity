@@ -1,10 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+
 import {
     createColorVariables,
     createPlainVariables,
     createSizeVariables,
+    toREM,
 } from '../../../utils/styled';
-import { COLORS } from '../../../constants/site';
 import {
     BORDER_RADIUS,
     BREAKPOINTS,
@@ -18,6 +19,7 @@ import {
     TRANSITION,
     Z_INDEX,
 } from '../../../constants/styled';
+import { COLORS } from '../../../constants/site';
 
 const BaseStyle = createGlobalStyle`
     :root{
@@ -35,15 +37,23 @@ const BaseStyle = createGlobalStyle`
         ${createPlainVariables(TRANSITION, 'transition')}
         ${createPlainVariables(Z_INDEX, 'z-index')}
 
-        --box: ${1000 / FONT_SIZE_BASE_PX}rem;
+        --font-size-px: ${FONT_SIZE_BASE_PX};
+        --box: ${toREM(1000)};
+    }
+
+    html{
+        font-size: ${FONT_SIZE_BASE_PX}px;
+    }
+
+    body{
+        font-size: var(--font-size-LG);
     }
 
     html, body{
         color: var(--color-brand-black);
         font-family: var(--font-family-main);
-        font-size: ${FONT_SIZE_BASE_PX}px;
-        font-size: var(--font-size-LG);
         max-width: 100vw;
+        min-height: 100vh;
         overflow-x: hidden;
         width: 100%;
     }
@@ -90,25 +100,26 @@ const BaseStyle = createGlobalStyle`
     a,
     textarea {
         background: transparent;
-        border: 0;
         border-radius: 0;
+        border: 0;
         outline: 0;
 
         &:hover {
-            outline: 0;
             cursor: pointer;
+            outline: 0;
         }
     }
 
     a,
     a:visited,
     a:focus {
-        text-decoration: none;
         color: inherit;
+        text-decoration: none;
 
         &:hover {
-            text-decoration: none;
             color: inherit;
+            cursor: pointer;
+            text-decoration: none;
         }
     }
 `;

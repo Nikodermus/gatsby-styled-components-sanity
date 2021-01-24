@@ -32,3 +32,5 @@ const withMedia = (size, rules) => css`
 export const mediaDesktop = (rules) => withMedia('desktop', rules);
 export const mediaDesktopXl = (rules) => withMedia('desktop-XL', rules);
 export const mediaTablet = (rules) => withMedia('tablet', rules);
+
+export const toREM = (size) => `calc(${size} / var(--font-size-px) * 1rem)`;

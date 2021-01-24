@@ -4,8 +4,9 @@ export const COLORS = {
     brandOrange: '#dd4e38',
 
     //  Neutrals
-    black: '#444444',
+    black: '#292A2B',
     gray: '#BCBFC3',
+    grayDark: '#444444',
     grayHighlight: '#F0F1F4',
     grayLight: '#E0E0E4',
     grayMedium: '#888B93',

@@ -44,7 +44,7 @@ export const BREAKPOINTS = {
 
 export const FONT_FAMILIES = {
     main:
-        "'barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+        "'REPLACE_ME, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 };
 
 export const FONT_WEIGHTS = {

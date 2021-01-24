@@ -2,17 +2,17 @@ import { INFO } from './src/constants/site';
 
 const config = {
     siteMetadata: {
-        author: `deBakatas`,
+        author: 'REPLACE_ME',
         description: INFO.description,
         siteUrl: INFO.URL,
         title: INFO.name,
     },
     plugins: [
-        `gatsby-plugin-styled-components`,
-        `gatsby-plugin-react-helmet`,
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
         `gatsby-plugin-netlify`,
+        `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-sharp`,
+        `gatsby-plugin-styled-components`,
+        `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -51,7 +51,6 @@ const config = {
             options: {
                 trackingIds: ['REPLACE_ME'],
                 gtagConfig: {
-                    optimize_id: 'OPT_CONTAINER_ID',
                     anonymize_ip: true,
                     cookie_expires: 0,
                 },

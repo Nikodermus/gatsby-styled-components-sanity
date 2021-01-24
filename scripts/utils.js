@@ -13,7 +13,7 @@ export const getParams = () => {
 
     const route = preRoute.map(Case.pascal).join('');
     const dir = `./src/components/${route}`;
-    const file = `./src/pages/${route}.jsx`;
+    const file = `./src/pages/${Case.kebab(route)}.jsx`;
 
     return { route, dir, file };
 };

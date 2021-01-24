@@ -1,5 +1,7 @@
 # Another Gatsby Boilerplate (by Nikodermus)
 
+[![Boilerplate Cover](https://i.postimg.cc/65Q0T64D/boilerplate-cover.png)](https://postimg.cc/s1tSNrcc)
+
 A _very_ opinionated boilerplate for creating sites with Gatsby, that focus on 3 main things. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), [Styled Components](https://styled-components.com/) and [CSS Variable System](https://www.infoq.com/news/2020/06/css-variables-design-systems/)
 
 ## Table of Contents
